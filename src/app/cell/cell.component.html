@@ -1,0 +1,11 @@
+<div class="cellClass {{cell.colorClass}}">
+
+  <div>
+    {{cell.cellText}}
+  </div>
+
+  <div class="image" [ngClass]="{'image_black':cell.color==colorEnum[4]}">
+    <img *ngIf="cell.isActive" src="assets\checkmark.png" height="30" width="30">
+    <img *ngIf="!cell.isActive" src="assets\cancel-2.png" height="30" width="30">
+  </div>
+</div>

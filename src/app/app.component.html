@@ -1,20 +1,85 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<nav class="navbar navbar-light " style="background-color: #e3f2fd;">
+  <button type="button" class="btn btn-primary " (click)="startAll()">Start</button>
+  <button type="button" class="btn btn-danger mr-auto ml-4 mt-lg-0" (click)="stopAll()">Stop</button>
+  <button type="button" class="btn btn-secondary mr-auto  " (click)="reset()">Reset</button>
+</nav>
+
+
+<br/>
+<br/>
+<br/>
+<div class="container-fluid">
+  <div class="row">
+
+    <!--left side controls-->
+    <div class="col-sm-2">
+
+      <!--Coosing the cell-->
+      <label for="cellSelectDropdown">Select cell</label>
+
+      <div ngbDropdown class="d-inline-bloc cellSelectDropdown">
+        <button class="btn btn-outline-secondary " id="cellSelectDropdown" ngbDropdownToggle>{{cellInFocus &&
+          cellInFocus.cellNumber+1}}
+        </button>
+        <div ngbDropdownMenu aria-labelledby="cellSelectDropdown">
+          <button class="dropdown-item"
+                  (click)="setCellInFocus(cell);"
+                  *ngFor="let cell of cellsMatrixAsArray; let idx = index">{{idx+1}}
+          </button>
+        </div>
+      </div>
+
+      <br/>
+      <br/>
+      <br/>
+
+      <!--toggeling-->
+      <button type="button" class="btn"
+              *ngIf="cellInFocus"
+              [ngClass]="{'btn-danger':cellInFocus.isActive,'btn-primary':!cellInFocus.isActive}"
+              (click)="toggleCell()">
+        {{cellInFocus && (cellInFocus.isActive ? 'Stop': 'Activate')}}
+      </button>
+
+      <br/>
+      <br/>
+      <br/>
+
+      <!--Interval-->
+      <div *ngIf="cellInFocus">
+        <label for="intervalInput">Interval</label>
+
+        <input type="number" class="interval" id="intervalInput" [(ngModel)]="intervalInput"
+               name="intervalInput" step="100" min="0" max="20000" maxlength="5" size="5"/>
+
+        <br/>
+
+        <button type="button" class="btn btn-primary " (click)="setCellInterval()">Set Interval</button>
+      </div>
+
+    </div>
+
+    <!--the matrix itself-->
+    <div class="col-sm-10">
+
+      <div class="container">
+        <div class="row" *ngFor="let row of cellsMatrix">
+          <div class="col-4  matrixCol " *ngFor="let cell of row">
+            <app-cell [cell]="cell" (onColorEvent)="onColorEvent($event)"></app-cell>
+          </div>
+        </div>
+      </div>
+
+      <br/>
+      <br/>
+      <br/>
+
+      <textarea [(ngModel)]="logOutput" name="logOutput" cols="60" rows="10"></textarea>
+
+    </div>
+  </div>
+
+
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+
 

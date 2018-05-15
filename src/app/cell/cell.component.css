@@ -1,0 +1,53 @@
+.cellClass {
+  border: black 1px solid;
+  height: 80px;
+}
+
+.cellClass div {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  font-size: larger;
+  transform: translateY(-50%);
+}
+
+.image {
+  left: 80px;
+  padding-left: 10px;
+}
+
+.image_black  img{
+  background-color: white;
+}
+
+
+.cellColorClassRed {
+  background-color: red;
+  color: white;
+}
+
+.cellColorClassBlue {
+  background-color: blue;
+  color: yellow;
+}
+
+.cellColorClassGreen {
+  background-color: green;
+  color: yellow;
+}
+
+.cellColorClassBlack {
+  background-color: black;
+  color: yellow;
+}
+
+.cellColorClassAqua {
+  background-color: aqua;
+  color: black;
+}
+
+.cellColorClassYellow {
+  background-color: yellow;
+  color: black;
+}

@@ -1,0 +1,32 @@
+@import '~bootstrap/dist/css/bootstrap.css';
+
+.matrixCol {
+  padding: 0px;
+}
+
+.interval {
+  width: 60px;
+}
+
+label {
+  padding-right: 20px;
+}
+
+.cellSelectDropdown {
+  display: inline;
+}
+
+.cellSelectDropdown button {
+  padding: 0px 7px;
+}
+
+.cellSelectDropdown div {
+  width: 10px;
+  padding: 0px;
+}
+
+textarea {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
