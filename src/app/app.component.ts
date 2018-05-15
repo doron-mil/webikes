@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import * as _ from 'lodash';
 import {Cell} from './model/cell';
 import {CellChangeEvent} from './model/CellChangeEvent';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-root',
@@ -74,8 +75,9 @@ export class AppComponent {
   }
 
   onColorEvent(cellChangeEvent: CellChangeEvent) {
-    const current = new Date();
-    const eventCahngeLog = `${current.getHours()}:${current.getMinutes()}:${current.getSeconds()}:${current.getMilliseconds()}` +
+    const current = moment();
+    const milisec = _.padStart(current.millisecond().toString(), 3, '0');
+    const eventCahngeLog = `${current.format('HH:mm:ss')}:${milisec}` +
       `- Cell no. ${cellChangeEvent.cellNumber + 1} has changed` +
       `from ${cellChangeEvent.prevColor} to ${cellChangeEvent.newColor}\n`;
     this.logOutput = this.logOutput + eventCahngeLog;
