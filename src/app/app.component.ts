@@ -79,6 +79,8 @@ export class AppComponent {
       `- Cell no. ${cellChangeEvent.cellNumber + 1} has changed` +
       `from ${cellChangeEvent.prevColor} to ${cellChangeEvent.newColor}\n`;
     this.logOutput = this.logOutput + eventCahngeLog;
+    const textarea = document.getElementById('textarea_id');
+    textarea.scrollTop = textarea.scrollHeight;
     // console.log(this.logOutput, cellChangeEvent);
   }
 }
